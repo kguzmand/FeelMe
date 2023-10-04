@@ -1,6 +1,6 @@
-package Logic;
+package logic;
 
-class NodoCancion {
+public class NodoCancion {
   private final Cancion cancion;
   private NodoCancion siguiente;
 

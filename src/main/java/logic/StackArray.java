@@ -1,3 +1,4 @@
+package logic;
 public class StackArray<T> {
     private static final int N = 100;
     private T[] sarray;

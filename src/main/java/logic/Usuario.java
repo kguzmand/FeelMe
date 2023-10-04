@@ -1,3 +1,4 @@
+package logic;
 public class Usuario {
     private String nombreUsuario;
     private int edad;

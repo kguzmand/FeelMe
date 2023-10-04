@@ -1,13 +1,18 @@
-package Logic;
+package logic;
 
+import GUI.MainGUI;
+
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        /*SwingUtilities SwingUtilities;
         SwingUtilities.invokeLater(() -> {
             MainGUI gui = new MainGUI();
             gui.setVisible(true);
         });
+
         Notification notification = new Notification(2,1);
         notification.sendNotification(); // Start the notification process.
 
@@ -47,6 +52,6 @@ public class Main {
                 default:
                     System.out.println("Opción no válida.");
             }
-        }
+        }*/
     }
 }

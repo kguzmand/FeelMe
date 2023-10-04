@@ -1,4 +1,4 @@
-package Logic;
+package logic;
 
 public class Queue<T> {
     private class Node<T> {

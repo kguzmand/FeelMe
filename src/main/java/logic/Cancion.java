@@ -1,6 +1,6 @@
-package Logic;
+package logic;
 
-class Cancion {
+public class Cancion {
   private final String nombre;
   private final String artista;
   private final String emocion;

@@ -1,8 +1,8 @@
-package Logic;
+package logic;
 
 import java.util.Random;
 
-class ListaCanciones {
+public class ListaCanciones {
   private NodoCancion primero;
 
   // Constructor

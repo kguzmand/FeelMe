@@ -1,4 +1,32 @@
+package logic;
+
 public class LinkedList {
+    private class Node {
+        private Usuario data;  // Campo para almacenar los datos
+        private Node next; // Campo para el siguiente nodo en la lista
+
+        // Constructor
+        public Node() {
+            this.data = null;
+            this.next = null;
+        }
+
+        public Usuario getData() {
+            return this.data;
+        }
+
+        public Node getNext(){
+            return this.next;
+        }
+
+        public void setData(Usuario data) {
+            this.data = data;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+    }
     private Node head;
 
     public LinkedList() {
@@ -52,32 +80,5 @@ public class LinkedList {
             System.out.println("-----------------------------");
             current = current.getNext();
         }
-    }
-}
-
-class Node {
-    private Usuario data;  // Campo para almacenar los datos
-    private Node next; // Campo para el siguiente nodo en la lista
-
-    // Constructor
-    public Node() {
-        this.data = null;
-        this.next = null;
-    }
-
-    public Usuario getData() {
-        return this.data;
-    }
-
-    public Node getNext(){
-        return this.next;
-    }
-
-    public void setData(Usuario data) {
-        this.data = data;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
     }
 }

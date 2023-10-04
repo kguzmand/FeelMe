@@ -1,3 +1,5 @@
+package logic;
+
 import java.util.EmptyStackException;
 
 public class StackEstadoUsuario {

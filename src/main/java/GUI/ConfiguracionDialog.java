@@ -8,10 +8,10 @@ import java.awt.event.ActionEvent;
 
 public class ConfiguracionDialog extends JDialog {
     private JTextField intervaloTextField;
-    private final JButton aplicarButton;
+    //private final JButton aplicarButton;
 
     public ConfiguracionDialog(JFrame parent) {
-        super(parent, "Configuración de Notificaciones", true);
+        /*super(parent, "Configuración de Notificaciones", true);
         setSize(300, 150);
         setLocationRelativeTo(parent);
 
@@ -41,6 +41,6 @@ public class ConfiguracionDialog extends JDialog {
             }
         });
 
-        getContentPane().add(panel);
+        getContentPane().add(panel);*/
     }
 }

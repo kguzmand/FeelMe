@@ -1,13 +1,17 @@
 package logic;
 
 import java.awt.*;
+import java.net.URL;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.Integer.parseInt;
 
 public class Notification {
     private final Queue<LocalTime> timeQueue;
@@ -42,14 +46,14 @@ public class Notification {
         }
     }
 
-    public void sendNotification() {
+    public void sendNotification(Usuario user, ListaCanciones listaCanciones) {
         setUpNotification();
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         boolean firstNotification = true;
         while (!timeQueue.empty()) {
             LocalTime notificationTime = timeQueue.dequeue();
             if (notificationTime != null) {
-                scheduleNotification(scheduler, notificationTime);
+                scheduleNotification(scheduler, notificationTime, user, listaCanciones);
                 //Graba la 1ra notificacion
                 if (firstNotification) {
                     recordFirstNotificationTime();
@@ -69,25 +73,76 @@ public class Notification {
         System.out.println("Fecha y hora de la primera notificación: " + formattedTime);
     }
 
-    private void scheduleNotification(ScheduledExecutorService scheduler, LocalTime notificationTime) {
+    private void scheduleNotification(ScheduledExecutorService scheduler, LocalTime notificationTime, Usuario user, ListaCanciones listaCanciones) {
         LocalTime currentTime = LocalTime.now();
         long initialDelay = Duration.between(currentTime, notificationTime).getSeconds();
 
-        // Schedule the notification for the specified time
-        scheduler.schedule(this::showNotification, initialDelay, TimeUnit.SECONDS);
+        // Schedule the notification for the specified time using a lambda expression
+        scheduler.schedule(() -> showNotification(user, listaCanciones), initialDelay, TimeUnit.SECONDS);
     }
 
-    private void showNotification() {
+    private void showNotification(Usuario user, ListaCanciones listaCanciones) {
         if (SystemTray.isSupported()) {
             SystemTray tray = SystemTray.getSystemTray();
-            Image iconImage = Toolkit.getDefaultToolkit().getImage("LogoFeelMe.png");
-            TrayIcon trayIcon = new TrayIcon(iconImage);
 
-            try {
-                tray.add(trayIcon);
-                trayIcon.displayMessage("FeelMe", "¡Es hora de expresar lo que sientes!", TrayIcon.MessageType.INFO);
-            } catch (AWTException e) {
-                e.printStackTrace();
+            // Obtener la URL del recurso desde la carpeta de recursos raíz
+            ClassLoader classLoader = getClass().getClassLoader();
+            URL imageURL = classLoader.getResource("LogoFeelMe.png");
+
+            if (imageURL != null) {
+                Image iconImage = Toolkit.getDefaultToolkit().getImage(imageURL);
+                TrayIcon trayIcon = new TrayIcon(iconImage);
+
+                try {
+                    // Agregar un ActionListener al TrayIcon
+                    trayIcon.addActionListener(e -> {
+                        Scanner scanner = new Scanner(System.in);
+                        System.out.println("Me siento...");
+                        System.out.println("1. Feliz");
+                        System.out.println("2. Triste");
+                        System.out.println("3. Melancolico");
+                        System.out.println("4. Enojado");
+                        System.out.println("5. Euforico");
+                        System.out.println("6. Enamorado");
+
+                        int choice = parseInt(scanner.next());
+
+                        switch (choice){
+                            case 1:
+                                user.setEstado("Feliz");
+                                break;
+                            case 2:
+                                user.setEstado("Triste");
+                                break;
+                            case 3:
+                                user.setEstado("Melancolico");
+                                break;
+                            case 4:
+                                user.setEstado("Enojado");
+                                break;
+                            case 5:
+                                user.setEstado("Euforico");
+                                break;
+                            case 6:
+                                user.setEstado("Enamorado");
+                                break;
+                            default:
+                                System.out.println("Opción no válida.");
+                                break;
+                        }
+
+                        Cancion newSong = listaCanciones.seleccionarCancionAleatoria(choice);
+                        System.out.println(newSong.getNombre() + " /" + newSong.getArtista());
+                    });
+
+                    tray.add(trayIcon);
+                    trayIcon.displayMessage("FeelMe", "¡Es hora de expresar lo que sientes!", TrayIcon.MessageType.INFO);
+
+                } catch (AWTException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("No se pudo cargar la imagen del recurso.");
             }
         } else {
             System.out.println("El sistema no admite la bandeja del sistema.");

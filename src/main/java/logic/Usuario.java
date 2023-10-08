@@ -4,14 +4,14 @@ public class Usuario {
     private int edad;
     private String correoElectronico;
     private String password;
-    private String estado;
+    private EstadoUsuario estados;
 
-    public Usuario(String nombreUsuario, int edad, String correoElectronico, String password, String estado) {
+    public Usuario(String nombreUsuario, int edad, String correoElectronico, String password) {
         this.nombreUsuario = nombreUsuario;
         this.edad = edad;
         this.correoElectronico = correoElectronico;
         this.password = password;
-        this.estado = estado;
+        this.estados = new EstadoUsuario();
     }
 
     // Getters y setters para los campos
@@ -30,15 +30,6 @@ public class Usuario {
     public String getPassword() {
         return password;
     }
-    public String getEstado() {
-        return estado;
-    }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void cambiarEstado(String nuevoEstado) {
-        this.estado = nuevoEstado;
-    }
+    public void setEstado(String estado) {estados.agregarEstado(estado);}
 }

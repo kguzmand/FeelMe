@@ -13,11 +13,11 @@ public class MainGUI extends JFrame {
     private JTextField nombreTextField;
     private JTextField artistaTextField;
     private JTextField emocionTextField;
-    private final JTextArea listaTextArea;
-    private final JButton configuracionButton;
+    //private final JTextArea listaTextArea;
+    //private final JButton configuracionButton;
 
     public MainGUI() {
-        lista = new ListaCanciones();
+        /*lista = new ListaCanciones();
 
         setTitle("FeelMe");
         setSize(500, 500);
@@ -133,7 +133,7 @@ public class MainGUI extends JFrame {
         SwingUtilities.invokeLater(() -> {
             MainGUI gui = new MainGUI();
             gui.setVisible(true);
-        });
+        });*/
     }
 }
 

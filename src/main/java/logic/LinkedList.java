@@ -27,7 +27,7 @@ public class LinkedList {
             this.next = next;
         }
     }
-    private Node head;
+    private Node head, ptr;
 
     public LinkedList() {
         head = null;
@@ -46,6 +46,19 @@ public class LinkedList {
             }
             current.setNext(newNode);
         }
+    }
+
+    public boolean registeredUser(String user, String password){
+        ptr = head;
+        while(ptr != null){
+            if(user.equals(ptr.data.getNombreUsuario())){
+                if(password.equals(ptr.data.getPassword())){
+                    return true;
+                }
+            }
+            ptr = ptr.getNext();
+        }
+        return false;
     }
 
     public boolean delete(Usuario usuario) {
@@ -67,6 +80,16 @@ public class LinkedList {
             current = current.getNext();
         }
         return false; // No se encontró el usuario
+    }
+
+    public Usuario searchUser(String user){
+        ptr = head;
+        while(true){
+            if(ptr.data.getNombreUsuario().equals(user)){
+                return ptr.data;
+            }
+            ptr = ptr.next;
+        }
     }
 
     public void print() {

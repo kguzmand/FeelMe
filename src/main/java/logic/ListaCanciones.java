@@ -3,7 +3,7 @@ package logic;
 import java.util.Random;
 
 public class ListaCanciones {
-  private NodoCancion primero;
+  private NodoCancion primero, ptr;
 
   // Constructor
   public ListaCanciones() {
@@ -54,22 +54,61 @@ public class ListaCanciones {
     return null; // Canción no encontrada
   }
 
-  public Cancion seleccionarCancionAleatoria() {
+  public Cancion seleccionarCancionAleatoria(int feel) {
+    String emocion = null;
     if (primero == null) {
       return null; // Retorna null si la lista está vacía
+    }else{
+      switch (feel){
+        case 1:
+          emocion = "Felicidad";
+          break;
+        case 2:
+          emocion = "Tristeza";
+          break;
+        case 3:
+          emocion = "Melancolia";
+          break;
+        case 4:
+          emocion = "Enojo";
+          break;
+        case 5:
+          emocion = "Euforia";
+          break;
+        case 6:
+          emocion = "Amor";
+          break;
+        default:
+          System.out.println("Opción no válida.");
+          break;
+      }
     }
+
+    ListaCanciones listaEmocion = filtrarEmocion(emocion);
 
     // Genera un número aleatorio entre 0 y el número de canciones en la lista
     Random rand = new Random();
-    int numCanciones = contarCanciones();
+    int numCanciones = listaEmocion.contarCanciones();
     int indiceAleatorio = rand.nextInt(numCanciones);
 
-    NodoCancion actual = primero;
+    NodoCancion actual = listaEmocion.primero;
     for (int i = 0; i < indiceAleatorio; i++) {
       actual = actual.getSiguiente();
     }
 
     return actual.getCancion();
+  }
+
+  public ListaCanciones filtrarEmocion(String emocion){
+    ListaCanciones listaEmocion = new ListaCanciones();
+    ptr = primero;
+    while(ptr != null){
+      if(ptr.getCancion().getEmocion().equals(emocion)){
+        listaEmocion.agregarCancion(ptr.getCancion());
+      }
+      ptr = ptr.getSiguiente();
+    }
+    return listaEmocion;
   }
 
   // Método auxiliar para contar el número de canciones en la lista

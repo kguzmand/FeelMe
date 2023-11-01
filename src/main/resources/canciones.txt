@@ -1,16 +1,15 @@
-Tu jardín con enanitos,Melendi,Amor
-Donde se aprende a querer,Mora,Tristeza
-120,Bad Bunny,Euforia
-Cuanto me duele,Morat,Melancolia
-Si estuviesemos juntos,Bad Bunny,Tristeza
-abcdefu,GAYLE,Enojo
-good 4 u,Olivia Rodrigo,Enojo
-Antes De Los Veinte,Morat,Melancolia
-Me Enamoro de Ella,Juan Luis Guerra,Amor
-DÁKITI,Bad Bunny ft. Jhayco,Euforia
-Ojitos Lindos,Bad Bunny ft. Bomba Esteréo,Amor
-A Pedir Su Mano,Juan Luis Guerra,Felicidad
-BOOKER T,Bad Bunny,Euforia
-New Rules,Dua lipa,Felicidad
-Estamos Bien,Bad Bunny,Felicidad
-You Belong With Me,Taylor Swift,Amor
+Tu jardin con enanitos,Melendi,Amor,Melendi-Tu-Jardin-con-enanitos.wav
+Donde se aprende a querer,Mora,Tristeza,Mora-DONDE-SE-APRENDE-A-QUERER.wav
+120,Bad Bunny,Euforia,BADBUNNY-120.wav
+Cuanto me duele,Morat,Melancolia,Morat-Cuanto-Me-Duele.wav
+Si estuviesemos juntos,Bad Bunny,Tristeza,BADBUNNY-SIESTUVIESEMOSJUNTOS.wav
+abcdefu,GAYLE,Enojo,GAYLE-abcdefu.wav
+Antes De Los Veinte,Morat,Melancolia,Morat-Antes-De-Los-Veinte.wav
+Me Enamoro de Ella,Juan Luis Guerra,Amor,Juan-Luis-Guerra-Me-Enamoro-De-Ella.wav
+DAKITI,Bad Bunny ft. Jhayco,Euforia,BADBUNNYxJHAYCORTEZ-DAKITI.wav
+Ojitos Lindos,Bad Bunny ft. Bomba Esteréo,Amor,BadBunny(ft.BombaEstéreo)-OjitosLindos.wav
+A Pedir Su Mano,Juan Luis Guerra,Felicidad,Juan-Luis-Guerra-A-Pedir-Su-Mano.wav
+BOOKER T,Bad Bunny,Euforia,BADBUNNY-BOOKERT.wav
+New Rules,Dua lipa,Felicidad,DuaLipa-NewRules.wav
+EstamosBien,BadBunny,Felicidad,BADBUNNY-ESTAMOSBIEN.wav
+You Belong With Me,Taylor Swift,Amor,Taylor-Swift-You-Belong-With-Me.wav

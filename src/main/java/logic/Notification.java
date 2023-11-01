@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static java.lang.Integer.parseInt;
 
@@ -130,9 +131,35 @@ public class Notification {
                                 System.out.println("Opción no válida.");
                                 break;
                         }
-
                         Cancion newSong = listaCanciones.seleccionarCancionAleatoria(choice);
-                        System.out.println(newSong.getNombre() + " /" + newSong.getArtista());
+
+                        ReproductorDeMusica playSong = new ReproductorDeMusica();
+                        // Reproducir la canción en un hilo separado
+                        Thread reproductorThread = new Thread(() -> {
+                            playSong.reproducirCancion(newSong.getRuta());
+                        });
+                        reproductorThread.start();
+
+                        boolean flag = true;
+
+                        while (flag){
+                            System.out.println("1. Pausar");
+                            System.out.println("2. Continuar");
+
+                            int option = parseInt(scanner.next());
+
+                            switch (option) {
+                                case 1:
+                                    flag = playSong.pausarCancion();
+                                    break;
+                                case 2:
+                                    playSong.continuarCancion();
+                                    break;
+                                default:
+                                    System.out.println("Opción no válida. Por favor, selecciona una opción válida.");
+                                    break;
+                            }
+                        }
                     });
 
                     tray.add(trayIcon);

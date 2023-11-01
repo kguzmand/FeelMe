@@ -26,13 +26,14 @@ public class Main {
                     // Divide la línea en partes separadas por comas
                     String[] partes = linea.split(",");
 
-                    if (partes.length == 3) {
+                    if (partes.length == 4) {
                         // Crea un objeto Cancion con los datos de la línea
                         String nombre = partes[0].trim();
                         String artista = partes[1].trim();
                         String emocion = partes[2].trim();
+                        String ruta = partes[3].trim();
 
-                        Cancion cancion = new Cancion(nombre, artista, emocion);
+                        Cancion cancion = new Cancion(nombre, artista, emocion, "src/main/resources/Songs/" + ruta);
 
                         // Agrega la canción a la lista
                         listaCanciones.agregarCancion(cancion);
@@ -43,9 +44,6 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            // Ahora tienes la lista de canciones cargada desde el archivo en resources
-            // Puedes trabajar con la listaCanciones según tus necesidades.
         } else {
             System.err.println("No se pudo encontrar el archivo en resources.");
         }

@@ -26,14 +26,16 @@ public class Main {
                     // Divide la línea en partes separadas por comas
                     String[] partes = linea.split(",");
 
-                    if (partes.length == 4) {
+                    if (partes.length == 5) {
                         // Crea un objeto Cancion con los datos de la línea
                         String nombre = partes[0].trim();
                         String artista = partes[1].trim();
                         String emocion = partes[2].trim();
                         String ruta = partes[3].trim();
+                        int popularidad = Integer.parseInt(partes[4].trim());
 
-                        Cancion cancion = new Cancion(nombre, artista, emocion, "src/main/resources/Songs/" + ruta);
+                        Cancion cancion;
+                        cancion = new Cancion(nombre, artista, emocion, "src/main/resources/Songs/" + ruta, popularidad);
 
                         // Agrega la canción a la lista
                         listaCanciones.agregarCancion(cancion);

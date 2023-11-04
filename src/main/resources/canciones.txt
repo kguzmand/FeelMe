@@ -1,15 +1,15 @@
-Tu jardin con enanitos,Melendi,Amor,Melendi-Tu-Jardin-con-enanitos.wav
-Donde se aprende a querer,Mora,Tristeza,Mora-DONDE-SE-APRENDE-A-QUERER.wav
-120,Bad Bunny,Euforia,BADBUNNY-120.wav
-Cuanto me duele,Morat,Melancolia,Morat-Cuanto-Me-Duele.wav
-Si estuviesemos juntos,Bad Bunny,Tristeza,BADBUNNY-SIESTUVIESEMOSJUNTOS.wav
-abcdefu,GAYLE,Enojo,GAYLE-abcdefu.wav
-Antes De Los Veinte,Morat,Melancolia,Morat-Antes-De-Los-Veinte.wav
-Me Enamoro de Ella,Juan Luis Guerra,Amor,Juan-Luis-Guerra-Me-Enamoro-De-Ella.wav
-DAKITI,Bad Bunny ft. Jhayco,Euforia,BADBUNNYxJHAYCORTEZ-DAKITI.wav
-Ojitos Lindos,Bad Bunny ft. Bomba Esteréo,Amor,BadBunny(ft.BombaEstéreo)-OjitosLindos.wav
-A Pedir Su Mano,Juan Luis Guerra,Felicidad,Juan-Luis-Guerra-A-Pedir-Su-Mano.wav
-BOOKER T,Bad Bunny,Euforia,BADBUNNY-BOOKERT.wav
-New Rules,Dua lipa,Felicidad,DuaLipa-NewRules.wav
-EstamosBien,BadBunny,Felicidad,BADBUNNY-ESTAMOSBIEN.wav
-You Belong With Me,Taylor Swift,Amor,Taylor-Swift-You-Belong-With-Me.wav
+Tu jardin con enanitos,Melendi,Amor,Melendi-Tu-Jardin-con-enanitos.wav,256
+Donde se aprende a querer,Mora,Tristeza,Mora-DONDE-SE-APRENDE-A-QUERER.wav,14
+120,Bad Bunny,Euforia,BADBUNNY-120.wav,147
+Cuanto me duele,Morat,Melancolia,Morat-Cuanto-Me-Duele.wav,82
+Si estuviesemos juntos,Bad Bunny,Tristeza,BADBUNNY-SIESTUVIESEMOSJUNTOS.wav,555
+abcdefu,GAYLE,Enojo,GAYLE-abcdefu.wav,225
+Antes De Los Veinte,Morat,Melancolia,Morat-Antes-De-Los-Veinte.wav,75
+Me Enamoro de Ella,Juan Luis Guerra,Amor,Juan-Luis-Guerra-Me-Enamoro-De-Ella.wav,8
+DAKITI,Bad Bunny ft. Jhayco,Euforia,BADBUNNYxJHAYCORTEZ-DAKITI.wav,1380
+Ojitos Lindos,Bad Bunny ft. Bomba Esteréo,Amor,BadBunny(ft.BombaEstéreo)-OjitosLindos.wav,268
+A Pedir Su Mano,Juan Luis Guerra,Felicidad,Juan-Luis-Guerra-A-Pedir-Su-Mano.wav,20
+BOOKER T,Bad Bunny,Euforia,BADBUNNY-BOOKERT.wav,290
+New Rules,Dua lipa,Felicidad,DuaLipa-NewRules.wav,2959
+EstamosBien,BadBunny,Felicidad,BADBUNNY-ESTAMOSBIEN.wav,571
+You Belong With Me,Taylor Swift,Amor,Taylor-Swift-You-Belong-With-Me.wav,1516

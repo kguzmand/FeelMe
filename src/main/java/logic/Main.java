@@ -1,18 +1,13 @@
 package logic;
 
-import GUI.MainGUI;
-import javax.swing.*;
+import GUI.HelloApplication;
+
 import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        /*SwingUtilities SwingUtilities = null;
-        SwingUtilities.invokeLater(() -> {
-            MainGUI gui = new MainGUI();
-            gui.setVisible(true);
-        });*/
+        HelloApplication.launch(HelloApplication.class, args);
 
         ListaCanciones listaCanciones = new ListaCanciones();
         // Cargar el archivo desde la carpeta resources

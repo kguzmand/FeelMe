@@ -16,6 +16,10 @@ public class ReproductorDeMusica {
     }
 
     public void reproducirCancion(String rutaDelArchivo) {
+        if(clip != null){
+            detenerCancion();
+        }
+
         try {
             File file = new File(rutaDelArchivo);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
@@ -40,6 +44,7 @@ public class ReproductorDeMusica {
             pausado = true;
             clip.stop();
         }else{
+            detenerCancion();
             return false;
         }
         return true;

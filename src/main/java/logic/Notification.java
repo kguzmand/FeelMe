@@ -1,22 +1,28 @@
 package logic;
 
 import java.awt.*;
+
 import java.net.URL;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
-import static java.lang.Integer.parseInt;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Notification {
     private final Queue<LocalTime> timeQueue;
     private StackArray<LocalDateTime> notificationHistory;
-    int hours, freq, occurrences;
+    private int hours, freq, occurrences;
+    private int option = 3;
+    private final Object lock = new Object();
+    private final Object myLock = new Object();
+    private int choice = 0;
+
 
     public Notification() {
         this.freq = 15;
@@ -83,6 +89,7 @@ public class Notification {
 
     private void showNotification(Usuario user, ListaCanciones listaCanciones) {
         if (SystemTray.isSupported()) {
+
             SystemTray tray = SystemTray.getSystemTray();
 
             // Obtener la URL del recurso desde la carpeta de recursos raíz
@@ -96,43 +103,34 @@ public class Notification {
                 try {
                     // Agregar un ActionListener al TrayIcon
                     trayIcon.addActionListener(e -> {
-                        Scanner scanner = new Scanner(System.in);
-                        System.out.println("Me siento...");
-                        System.out.println("1. Feliz");
-                        System.out.println("2. Triste");
-                        System.out.println("3. Melancolico");
-                        System.out.println("4. Enojado");
-                        System.out.println("5. Euforico");
-                        System.out.println("6. Enamorado");
+                            switch (choice) {
+                                case 1:
+                                    user.setEstado("Feliz");
+                                    break;
+                                case 2:
+                                    user.setEstado("Triste");
+                                    break;
+                                case 3:
+                                    user.setEstado("Melancolico");
+                                    break;
+                                case 4:
+                                    user.setEstado("Enojado");
+                                    break;
+                                case 5:
+                                    user.setEstado("Euforico");
+                                    break;
+                                case 6:
+                                    user.setEstado("Enamorado");
+                                    break;
+                                default:
+                                    System.out.println("Opción no válida.");
+                                    break;
+                            }
 
-                        int choice = parseInt(scanner.next());
-
-                        switch (choice){
-                            case 1:
-                                user.setEstado("Feliz");
-                                break;
-                            case 2:
-                                user.setEstado("Triste");
-                                break;
-                            case 3:
-                                user.setEstado("Melancolico");
-                                break;
-                            case 4:
-                                user.setEstado("Enojado");
-                                break;
-                            case 5:
-                                user.setEstado("Euforico");
-                                break;
-                            case 6:
-                                user.setEstado("Enamorado");
-                                break;
-                            default:
-                                System.out.println("Opción no válida.");
-                                break;
-                        }
                         Cancion newSong = listaCanciones.seleccionarCancionAleatoria(choice);
-
                         ReproductorDeMusica playSong = new ReproductorDeMusica();
+
+
                         // Reproducir la canción en un hilo separado
                         Thread reproductorThread = new Thread(() -> {
                             playSong.reproducirCancion(newSong.getRuta());
@@ -140,22 +138,20 @@ public class Notification {
                         reproductorThread.start();
 
                         boolean flag = true;
-
-                        while (flag){
-                            System.out.println("1. Pausar");
-                            System.out.println("2. Continuar");
-
-                            int option = parseInt(scanner.next());
-
-                            switch (option) {
+                        while (flag) {
+                            switch (getOption()) {
                                 case 1:
                                     flag = playSong.pausarCancion();
+                                    setOption(3);
                                     break;
                                 case 2:
                                     playSong.continuarCancion();
+                                    setOption(3);
+                                    break;
+                                case 3:
                                     break;
                                 default:
-                                    System.out.println("Opción no válida. Por favor, selecciona una opción válida.");
+                                    System.out.println("Opcion no valida");
                                     break;
                             }
                         }
@@ -173,5 +169,21 @@ public class Notification {
         } else {
             System.out.println("El sistema no admite la bandeja del sistema.");
         }
+    }
+
+    public void setOption(int value) {
+        synchronized (lock) {
+            option = value;
+        }
+    }
+
+    public int getOption() {
+        synchronized (lock) {
+            return option;
+        }
+    }
+
+    public void setChoice(int choice) {
+        this.choice = choice;
     }
 }

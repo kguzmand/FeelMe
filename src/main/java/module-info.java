@@ -10,4 +10,6 @@ module GUI {
 
     opens GUI to javafx.fxml;
     exports GUI;
+    exports logic;
+    opens logic to javafx.fxml;
 }

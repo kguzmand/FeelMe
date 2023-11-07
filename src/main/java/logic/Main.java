@@ -1,49 +1,14 @@
 package logic;
 
 import GUI.HelloApplication;
+import GUI.PrincipalController;
+import javafx.application.Application;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        HelloApplication.launch(HelloApplication.class, args);
-
-        ListaCanciones listaCanciones = new ListaCanciones();
-        // Cargar el archivo desde la carpeta resources
-        InputStream inputStream = Main.class.getResourceAsStream("/canciones.txt");
-
-        if (inputStream != null) {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-                String linea;
-
-                while ((linea = reader.readLine()) != null) {
-                    // Divide la línea en partes separadas por comas
-                    String[] partes = linea.split(",");
-
-                    if (partes.length == 5) {
-                        // Crea un objeto Cancion con los datos de la línea
-                        String nombre = partes[0].trim();
-                        String artista = partes[1].trim();
-                        String emocion = partes[2].trim();
-                        String ruta = partes[3].trim();
-                        int popularidad = Integer.parseInt(partes[4].trim());
-
-                        Cancion cancion;
-                        cancion = new Cancion(nombre, artista, emocion, "src/main/resources/Songs/" + ruta, popularidad);
-
-                        // Agrega la canción a la lista
-                        listaCanciones.agregarCancion(cancion);
-                    } else {
-                        System.out.println("Error en el formato de la línea: " + linea);
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("No se pudo encontrar el archivo en resources.");
-        }
 
         Scanner scanner = new Scanner(System.in);
         LinkedList userList = new LinkedList();
@@ -85,8 +50,6 @@ public class Main {
 
         System.out.println("Bienvenido, " + user);
         Usuario thisUser = userList.searchUser(user);
-        Notification notification = new Notification(2, 1);
-        notification.sendNotification(thisUser, listaCanciones);
 
     }
 }

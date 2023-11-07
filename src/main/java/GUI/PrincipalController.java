@@ -8,8 +8,10 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import logic.Logic;
+import logic.ListaCanciones;
+import controller.Logic;
 import logic.Notification;
+import logic.Usuario;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,10 +31,16 @@ public class PrincipalController implements Initializable {
 
     @FXML
     private Button playerButton;
-    Logic logic = new Logic();
-    private int actions = 2;
+    private int actions;
+    ListaCanciones listaCanciones = new ListaCanciones();
+    Notification notification = new Notification(2, 1);
+    Usuario user = new Usuario("Kguz", 19, "@", "1");
+    Logic logic = new Logic(listaCanciones, notification, user);
 
-    private Notification notification;
+    public PrincipalController() {
+        this.actions = 2;
+        logic.scheduleNotification();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,7 +54,11 @@ public class PrincipalController implements Initializable {
         playerButton.setOnAction(this::handlePlayerButton);
     }
     @FXML
-    protected void handleOption(int num) {logic.scheduleNotification(num);}
+    protected void handleOption(int num) {
+        logic.emotionChoice(num);
+        logic.getNotification().setChoice(num);
+
+    }
     @FXML
     private void handlePlayerButton(ActionEvent actionEvent){
         if(actions == 2){
@@ -55,6 +67,6 @@ public class PrincipalController implements Initializable {
             actions++;
         }
         System.out.println(actions);
-        logic.songOptions(actions);
+        logic.getNotification().setOption(actions);
     }
 }

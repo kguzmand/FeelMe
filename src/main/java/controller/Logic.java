@@ -1,6 +1,5 @@
-package logic;
+package controller;
 
-import javafx.application.Platform;
 import logic.*;
 
 import java.io.BufferedReader;
@@ -9,12 +8,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Logic {
-    ListaCanciones listaCanciones = new ListaCanciones();
-    Notification notification = new Notification(2, 1);
-    Usuario user = new Usuario("Kguz", 19, "@", "1");
+    private ListaCanciones listaCanciones;
+    private Notification notification;
+    private Usuario user;
 
-    public void scheduleNotification(int choice){
-        notification.setChoice(choice);
+    public Logic() {
+    }
+
+    public Logic(ListaCanciones listaCanciones, Notification notification, Usuario user) {
+        this.listaCanciones = listaCanciones;
+        this.notification = notification;
+        this.user = user;
+    }
+
+    public void scheduleNotification(){
+        //notification.setChoice(choice);
         loadSongs();
         notification.sendNotification(user, listaCanciones);
     }
@@ -56,7 +64,33 @@ public class Logic {
         }
     }
 
-    public void songOptions(int num){
-        notification.setOption(num);
+    public void emotionChoice(int choice){
+        switch (choice) {
+            case 1:
+                user.setEstado("Feliz");
+                break;
+            case 2:
+                user.setEstado("Triste");
+                break;
+            case 3:
+                user.setEstado("Melancolico");
+                break;
+            case 4:
+                user.setEstado("Enojado");
+                break;
+            case 5:
+                user.setEstado("Euforico");
+                break;
+            case 6:
+                user.setEstado("Enamorado");
+                break;
+            default:
+                System.out.println("Opción no válida.");
+                break;
+        }
+    }
+
+    public Notification getNotification() {
+        return notification;
     }
 }

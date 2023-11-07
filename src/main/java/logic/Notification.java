@@ -14,6 +14,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 public class Notification {
     private final Queue<LocalTime> timeQueue;
     private StackArray<LocalDateTime> notificationHistory;
@@ -22,6 +23,7 @@ public class Notification {
     private final Object lock = new Object();
     private final Object myLock = new Object();
     private int choice = 0;
+    private CountDownLatch choiceLatch = new CountDownLatch(1);
 
 
     public Notification() {
@@ -103,30 +105,11 @@ public class Notification {
                 try {
                     // Agregar un ActionListener al TrayIcon
                     trayIcon.addActionListener(e -> {
-                            switch (choice) {
-                                case 1:
-                                    user.setEstado("Feliz");
-                                    break;
-                                case 2:
-                                    user.setEstado("Triste");
-                                    break;
-                                case 3:
-                                    user.setEstado("Melancolico");
-                                    break;
-                                case 4:
-                                    user.setEstado("Enojado");
-                                    break;
-                                case 5:
-                                    user.setEstado("Euforico");
-                                    break;
-                                case 6:
-                                    user.setEstado("Enamorado");
-                                    break;
-                                default:
-                                    System.out.println("Opción no válida.");
-                                    break;
-                            }
-
+                        try {
+                            choiceLatch.await(); // Esperar hasta que choice tenga un valor diferente de cero
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
                         Cancion newSong = listaCanciones.seleccionarCancionAleatoria(choice);
                         ReproductorDeMusica playSong = new ReproductorDeMusica();
 
@@ -185,5 +168,6 @@ public class Notification {
 
     public void setChoice(int choice) {
         this.choice = choice;
+        choiceLatch.countDown(); // Liberar el CountDownLatch
     }
 }

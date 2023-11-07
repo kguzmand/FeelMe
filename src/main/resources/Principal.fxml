@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -20,14 +21,34 @@
       </ImageView>
       <Pane layoutX="318.0" layoutY="60.0" opacity="0.95" prefHeight="311.0" prefWidth="254.0" style="-fx-background-color: black;">
          <children>
-            <Button fx:id="playerButton" layoutX="192.0" layoutY="253.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="41.0" style="-fx-background-color: white; -fx-background-radius: 100;" text="1" textFill="WHITE" />
+            <Button fx:id="playerButton" layoutX="185.0" layoutY="246.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="52.0" style="-fx-background-color: white; -fx-background-radius: 100;" text="1" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <Pane prefHeight="36.0" prefWidth="36.0">
+                     <children>
+                        <ImageView fx:id="buttonImage" fitHeight="30.0" fitWidth="30.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Play.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </graphic></Button>
             <Line endX="52.0" layoutX="121.0" layoutY="285.0" startX="-100.0" stroke="WHITE" />
             <ImageView fx:id="songImage" fitHeight="203.0" fitWidth="200.0" layoutX="27.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="songName" fill="WHITE" layoutX="21.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FeelMe" wrappingWidth="153.0">
+            <Text fx:id="songArtist" fill="WHITE" layoutX="21.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="146.0">
                <font>
-                  <Font name="Eras Demi ITC" size="18.0" />
+                  <Font name="Book Antiqua" size="10.0" />
                </font>
             </Text>
+            <VBox fx:id="casa" alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="241.0" prefHeight="44.0" prefWidth="153.0">
+               <children>
+                  <Text fx:id="songName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FeelMe" wrappingWidth="125.0">
+                     <font>
+                        <Font name="Eras Demi ITC" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
          </children>
       </Pane>
       <Pane layoutY="-3.0" prefHeight="44.0" prefWidth="600.0" style="-fx-background-color: BLACK;" />
@@ -41,6 +62,5 @@
             <MenuItem fx:id="option6" mnemonicParsing="false" text="Enamorad@" />
         </items>
       </MenuButton>
-      <ImageView fx:id="buttonImage" fitHeight="25.0" fitWidth="23.0" layoutX="207.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

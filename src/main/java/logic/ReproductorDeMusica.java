@@ -59,6 +59,7 @@ public class ReproductorDeMusica {
 
     public void detenerCancion() {
         if (clip != null) {
+            clip.stop();
             clip.close();
         }
     }

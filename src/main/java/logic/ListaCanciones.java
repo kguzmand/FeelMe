@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class ListaCanciones {
   private NodoCancion primero, ptr;
+  private String songChoice, ArtistChoice;
 
   // Constructor
   public ListaCanciones() {
@@ -96,6 +97,9 @@ public class ListaCanciones {
       actual = actual.getSiguiente();
     }
 
+    setSongChoice(actual.getCancion().getNombre());
+    setArtistChoice(actual.getCancion().getArtista());
+
     return actual.getCancion();
   }
 
@@ -149,6 +153,22 @@ public class ListaCanciones {
     while (heapPopularidad.size > 0) {
       agregarCancion(heapPopularidad.removeMin());
     }
+  }
+
+  public String getSongChoice() {
+    return songChoice;
+  }
+
+  public void setSongChoice(String songChoice) {
+    this.songChoice = songChoice;
+  }
+
+  public String getArtistChoice() {
+    return ArtistChoice;
+  }
+
+  public void setArtistChoice(String artistChoice) {
+    ArtistChoice = artistChoice;
   }
 }
 

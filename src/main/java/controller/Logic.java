@@ -12,9 +12,6 @@ public class Logic {
     private Notification notification;
     private Usuario user;
 
-    public Logic() {
-    }
-
     public Logic(ListaCanciones listaCanciones, Notification notification, Usuario user) {
         this.listaCanciones = listaCanciones;
         this.notification = notification;
@@ -64,33 +61,41 @@ public class Logic {
         }
     }
 
-    public void emotionChoice(int choice){
+    public String emotionChoice(int choice){
         switch (choice) {
             case 1:
                 user.setEstado("Feliz");
-                break;
+                return "Feliz";
             case 2:
                 user.setEstado("Triste");
-                break;
+                return "Triste";
             case 3:
-                user.setEstado("Melancolico");
-                break;
+                user.setEstado("Melancolic@");
+                return "Melancolic@";
             case 4:
-                user.setEstado("Enojado");
-                break;
+                user.setEstado("Enojad@");
+                return "Enojad@";
             case 5:
-                user.setEstado("Euforico");
-                break;
+                user.setEstado("Euforic@");
+                return "Euforic@";
             case 6:
                 user.setEstado("Enamorado");
-                break;
+                return "Enamorad@";
             default:
-                System.out.println("Opción no válida.");
-                break;
+                throw new IllegalArgumentException("Opción no válida: " + choice);
         }
     }
 
     public Notification getNotification() {
         return notification;
     }
+
+    public String songName(){
+        return listaCanciones.getSongChoice();
+    }
+
+    public String artistName(){
+        return listaCanciones.getArtistChoice();
+    }
+
 }

@@ -12,7 +12,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Notification {
@@ -113,7 +112,6 @@ public class Notification {
                         Cancion newSong = listaCanciones.seleccionarCancionAleatoria(choice);
                         ReproductorDeMusica playSong = new ReproductorDeMusica();
 
-
                         // Reproducir la canción en un hilo separado
                         Thread reproductorThread = new Thread(() -> {
                             playSong.reproducirCancion(newSong.getRuta());
@@ -169,5 +167,9 @@ public class Notification {
     public void setChoice(int choice) {
         this.choice = choice;
         choiceLatch.countDown(); // Liberar el CountDownLatch
+    }
+
+    public void resetChoiceLatch() {
+        choiceLatch = new CountDownLatch(1);
     }
 }

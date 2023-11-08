@@ -7,6 +7,7 @@ module GUI {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
+    requires java.sql;
 
     opens GUI to javafx.fxml;
     exports GUI;

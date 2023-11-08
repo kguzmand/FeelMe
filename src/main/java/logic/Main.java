@@ -5,6 +5,11 @@ import GUI.PrincipalController;
 import javafx.application.Application;
 
 import java.io.*;
+import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -31,10 +36,25 @@ public class Main {
                 System.out.print("Contraseña: ");
                 String newPassword = scanner.next();
 
-                Usuario newUser = new Usuario(nombreUsuario, edad, correoElectronico, newPassword);
-                userList.insert(newUser);
-                System.out.println("Usuario registrado con éxito.");
-                choice = 1;
+                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/login", "DayanaSenpai", "1003689316")) {
+                    String insertQuery = "INSERT INTO Usuarios (username, edad, email, contraseña) VALUES (?, ?, ?, ?)";
+                    try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+                        preparedStatement.setString(1, nombreUsuario);
+                        preparedStatement.setInt(2, edad);
+                        preparedStatement.setString(3, correoElectronico);
+                        preparedStatement.setString(4, newPassword);
+
+                        int rowsAffected = preparedStatement.executeUpdate();
+                        if (rowsAffected > 0) {
+                            System.out.println("Usuario registrado con éxito.");
+                            choice = 1;
+                        } else {
+                            System.err.println("No se pudo registrar el usuario.");
+                        }
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             } else {
                 System.out.print("Ingresa tu usuario: ");
                 user = scanner.next();

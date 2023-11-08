@@ -18,6 +18,7 @@ import logic.Notification;
 import logic.Usuario;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PrincipalController implements Initializable {
@@ -77,6 +78,9 @@ public class PrincipalController implements Initializable {
         Platform.runLater(() -> {
             songName.setText(logic.songName());
             songArtist.setText(logic.artistName());
+            Image song = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/ImageSongs/" + logic.imageName())));
+            songImage.setImage(song);
+            Image stop = new Image("Stop.png");
         });
         // Restaurar el CountDownLatch
         logic.getNotification().resetChoiceLatch();

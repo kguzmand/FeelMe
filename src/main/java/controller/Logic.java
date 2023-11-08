@@ -36,16 +36,17 @@ public class Logic {
                     // Divide la línea en partes separadas por comas
                     String[] partes = linea.split(",");
 
-                    if (partes.length == 5) {
+                    if (partes.length == 6) {
                         // Crea un objeto Cancion con los datos de la línea
                         String nombre = partes[0].trim();
                         String artista = partes[1].trim();
                         String emocion = partes[2].trim();
                         String ruta = partes[3].trim();
                         int popularidad = Integer.parseInt(partes[4].trim());
+                        String rutaImagen = partes[5].trim();
 
                         Cancion cancion;
-                        cancion = new Cancion(nombre, artista, emocion, "src/main/resources/Songs/" + ruta, popularidad);
+                        cancion = new Cancion(nombre, artista, emocion, "src/main/resources/Songs/" + ruta, popularidad, rutaImagen);
 
                         // Agrega la canción a la lista
                         listaCanciones.agregarCancion(cancion);
@@ -96,6 +97,10 @@ public class Logic {
 
     public String artistName(){
         return listaCanciones.getArtistChoice();
+    }
+
+    public String imageName(){
+        return listaCanciones.getImageChoice();
     }
 
 }

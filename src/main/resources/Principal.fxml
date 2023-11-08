@@ -34,15 +34,18 @@
                   </Pane>
                </graphic></Button>
             <Line endX="52.0" layoutX="121.0" layoutY="285.0" startX="-100.0" stroke="WHITE" />
-            <ImageView fx:id="songImage" fitHeight="203.0" fitWidth="200.0" layoutX="27.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="songImage" fitHeight="200.0" fitWidth="200.0" layoutX="27.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ImageSongs/FeelMeSong.png" />
+               </image></ImageView>
             <Text fx:id="songArtist" fill="WHITE" layoutX="21.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="146.0">
                <font>
                   <Font name="Book Antiqua" size="10.0" />
                </font>
             </Text>
-            <VBox fx:id="casa" alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="241.0" prefHeight="44.0" prefWidth="153.0">
+            <VBox fx:id="casa" alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="235.0" prefHeight="50.0" prefWidth="153.0">
                <children>
-                  <Text fx:id="songName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FeelMe" wrappingWidth="125.0">
+                  <Text fx:id="songName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FeelMe" wrappingWidth="134.0">
                      <font>
                         <Font name="Eras Demi ITC" size="18.0" />
                      </font>

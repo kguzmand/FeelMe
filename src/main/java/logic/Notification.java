@@ -23,6 +23,7 @@ public class Notification {
     private final Object myLock = new Object();
     private int choice = 0;
     private CountDownLatch choiceLatch = new CountDownLatch(1);
+    private CountDownLatch optionLatch = new CountDownLatch(1);
 
 
     public Notification() {
@@ -155,14 +156,22 @@ public class Notification {
     public void setOption(int value) {
         synchronized (lock) {
             option = value;
+            optionLatch.countDown();
         }
     }
 
     public int getOption() {
+        try {
+            optionLatch.await(); // Espera hasta que se actualice la variable option
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         synchronized (lock) {
             return option;
         }
     }
+
 
     public void setChoice(int choice) {
         this.choice = choice;

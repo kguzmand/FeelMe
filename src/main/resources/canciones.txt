@@ -1,15 +1,16 @@
-Tu jardin con enanitos,Melendi,Amor,Melendi-Tu-Jardin-con-enanitos.wav,256
-Donde se aprende a querer,Mora,Tristeza,Mora-DONDE-SE-APRENDE-A-QUERER.wav,14
-120,Bad Bunny,Euforia,BADBUNNY-120.wav,147
-Cuanto me duele,Morat,Melancolia,Morat-Cuanto-Me-Duele.wav,82
-Si estuviesemos juntos,Bad Bunny,Tristeza,BADBUNNY-SIESTUVIESEMOSJUNTOS.wav,555
-abcdefu,GAYLE,Enojo,GAYLE-abcdefu.wav,225
-Antes De Los Veinte,Morat,Melancolia,Morat-Antes-De-Los-Veinte.wav,75
-Me Enamoro de Ella,Juan Luis Guerra,Amor,Juan-Luis-Guerra-Me-Enamoro-De-Ella.wav,8
-DAKITI,Bad Bunny ft. Jhayco,Euforia,BADBUNNYxJHAYCORTEZ-DAKITI.wav,1380
-Ojitos Lindos,Bad Bunny ft. Bomba Esteréo,Amor,BadBunny(ft.BombaEstéreo)-OjitosLindos.wav,268
-A Pedir Su Mano,Juan Luis Guerra,Felicidad,Juan-Luis-Guerra-A-Pedir-Su-Mano.wav,20
-BOOKER T,Bad Bunny,Euforia,BADBUNNY-BOOKERT.wav,290
-New Rules,Dua lipa,Felicidad,DuaLipa-NewRules.wav,2959
-EstamosBien,BadBunny,Felicidad,BADBUNNY-ESTAMOSBIEN.wav,571
-You Belong With Me,Taylor Swift,Amor,Taylor-Swift-You-Belong-With-Me.wav,1516
+Tu jardin con enanitos,Melendi,Amor,Melendi-Tu-Jardin-con-enanitos.wav,256,TJCE.png
+Donde se aprende a querer,Mora,Tristeza,Mora-DONDE-SE-APRENDE-A-QUERER.wav,14,DSAAQ.png
+120,Bad Bunny,Euforia,BADBUNNY-120.wav,147,120.png
+Cuanto me duele,Morat,Melancolia,Morat-Cuanto-Me-Duele.wav,82,CMD.jpg
+Si estuviesemos juntos,Bad Bunny,Tristeza,BADBUNNY-SIESTUVIESEMOSJUNTOS.wav,555,SEJ.jpg
+abcdefu,GAYLE,Enojo,GAYLE-abcdefu.wav,225,ABCDEFU.png
+Antes De Los Veinte,Morat,Melancolia,Morat-Antes-De-Los-Veinte.wav,75,ADL20.jpg
+Me Enamoro de Ella,Juan Luis Guerra,Amor,Juan-Luis-Guerra-Me-Enamoro-De-Ella.wav,8,MEDE.jpg
+DAKITI,Bad Bunny ft. Jhayco,Euforia,BADBUNNYxJHAYCORTEZ-DAKITI.wav,1380,D.jpg
+Ojitos Lindos,Bad Bunny ft. Bomba Esteréo,Amor,BadBunny(ft.BombaEstéreo)-OjitosLindos.wav,268,OL.png
+A Pedir Su Mano,Juan Luis Guerra,Felicidad,Juan-Luis-Guerra-A-Pedir-Su-Mano.wav,20,APSM.jpg
+BOOKER T,Bad Bunny,Euforia,BADBUNNY-BOOKERT.wav,290,120.png
+New Rules,Dua lipa,Felicidad,DuaLipa-NewRules.wav,2959,NR.png
+EstamosBien,BadBunny,Felicidad,BADBUNNY-ESTAMOSBIEN.wav,571,SEJ.jpg
+You Belong With Me,Taylor Swift,Amor,Taylor-Swift-You-Belong-With-Me.wav,1516,YBWM.jpg
+MONACO,Bad Bunny,Euforia,BADBUNNY-MONACO.wav,5000,M.png

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class ListaCanciones {
   private NodoCancion primero, ptr;
-  private String songChoice, ArtistChoice;
+  private String songChoice, artistChoice, imageChoice;
 
   // Constructor
   public ListaCanciones() {
@@ -99,6 +99,7 @@ public class ListaCanciones {
 
     setSongChoice(actual.getCancion().getNombre());
     setArtistChoice(actual.getCancion().getArtista());
+    setImageChoice(actual.getCancion().getImagen());
 
     return actual.getCancion();
   }
@@ -164,11 +165,19 @@ public class ListaCanciones {
   }
 
   public String getArtistChoice() {
-    return ArtistChoice;
+    return artistChoice;
   }
 
   public void setArtistChoice(String artistChoice) {
-    ArtistChoice = artistChoice;
+    this.artistChoice = artistChoice;
+  }
+
+  public String getImageChoice() {
+    return imageChoice;
+  }
+
+  public void setImageChoice(String imageChoice){
+    this.imageChoice = imageChoice;
   }
 }
 

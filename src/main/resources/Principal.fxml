@@ -43,11 +43,11 @@
                   <Font name="Book Antiqua" size="10.0" />
                </font>
             </Text>
-            <VBox fx:id="casa" alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="235.0" prefHeight="50.0" prefWidth="153.0">
+            <VBox fx:id="casa" alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="241.0" prefHeight="44.0" prefWidth="153.0">
                <children>
-                  <Text fx:id="songName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FeelMe" wrappingWidth="134.0">
+                  <Text fx:id="songName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FeelMe" wrappingWidth="142.0">
                      <font>
-                        <Font name="Eras Demi ITC" size="18.0" />
+                        <Font name="Eras Demi ITC" size="17.0" />
                      </font>
                   </Text>
                </children>

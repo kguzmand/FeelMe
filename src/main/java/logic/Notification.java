@@ -54,14 +54,14 @@ public class Notification {
         }
     }
 
-    public void sendNotification(Usuario user, ListaCanciones listaCanciones) {
+    public void sendNotification(User user, SongList songList) {
         setUpNotification();
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         boolean firstNotification = true;
         while (!timeQueue.empty()) {
             LocalTime notificationTime = timeQueue.dequeue();
             if (notificationTime != null) {
-                scheduleNotification(scheduler, notificationTime, user, listaCanciones);
+                scheduleNotification(scheduler, notificationTime, user, songList);
                 //Graba la 1ra notificacion
                 if (firstNotification) {
                     recordFirstNotificationTime();
@@ -81,15 +81,15 @@ public class Notification {
         System.out.println("Fecha y hora de la primera notificación: " + formattedTime);
     }
 
-    private void scheduleNotification(ScheduledExecutorService scheduler, LocalTime notificationTime, Usuario user, ListaCanciones listaCanciones) {
+    private void scheduleNotification(ScheduledExecutorService scheduler, LocalTime notificationTime, User user, SongList songList) {
         LocalTime currentTime = LocalTime.now();
         long initialDelay = Duration.between(currentTime, notificationTime).getSeconds();
 
         // Schedule the notification for the specified time using a lambda expression
-        scheduler.schedule(() -> showNotification(user, listaCanciones), initialDelay, TimeUnit.SECONDS);
+        scheduler.schedule(() -> showNotification(user, songList), initialDelay, TimeUnit.SECONDS);
     }
 
-    private void showNotification(Usuario user, ListaCanciones listaCanciones) {
+    private void showNotification(User user, SongList songList) {
         if (SystemTray.isSupported()) {
 
             SystemTray tray = SystemTray.getSystemTray();
@@ -110,8 +110,8 @@ public class Notification {
                         } catch (InterruptedException ex) {
                             ex.printStackTrace();
                         }
-                        Cancion newSong = listaCanciones.seleccionarCancionAleatoria(choice);
-                        ReproductorDeMusica playSong = new ReproductorDeMusica();
+                        Cancion newSong = songList.seleccionarCancionAleatoria(choice);
+                        MusicPlayer playSong = new MusicPlayer();
 
                         // Reproducir la canción en un hilo separado
                         Thread reproductorThread = new Thread(() -> {

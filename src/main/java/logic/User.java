@@ -1,17 +1,17 @@
 package logic;
-public class Usuario {
+public class User {
     private String nombreUsuario;
     private int edad;
     private String correoElectronico;
     private String password;
-    private EstadoUsuario estados;
+    private UserStatus estados;
 
-    public Usuario(String nombreUsuario, int edad, String correoElectronico, String password) {
+    public User(String nombreUsuario, int edad, String correoElectronico, String password) {
         this.nombreUsuario = nombreUsuario;
         this.edad = edad;
         this.correoElectronico = correoElectronico;
         this.password = password;
-        this.estados = new EstadoUsuario();
+        this.estados = new UserStatus();
     }
 
     // Getters y setters para los campos

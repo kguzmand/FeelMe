@@ -1,6 +1,7 @@
 package logic;
 
-public class EstadoUsuario {
+public class UserStatus {
+    //Pendiente trabajar en el codigo para agregar funcionalidades nuevas no eliminar comentados
     private static class Node{
         private String data;  // Campo para almacenar los datos
         private Node next; // Campo para el siguiente nodo en la lista
@@ -28,7 +29,7 @@ public class EstadoUsuario {
         }
     }
     private Node head, tail, ptr;
-    public EstadoUsuario() {this.head = null;}
+    public UserStatus() {this.head = null;}
     // Función para agregar un nuevo estado al principio de la lista
     public void agregarEstado(String estado) {
         Node node = new Node();
@@ -83,6 +84,7 @@ public class EstadoUsuario {
     public boolean contieneEstado(String estado) {
         return estados.contains(estado);
     }
+
     //Funcion para hacer pop()
     public String eliminarPrimero() {
         // Si la lista está vacía, devolvemos null

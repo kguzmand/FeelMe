@@ -8,12 +8,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Logic {
-    private ListaCanciones listaCanciones;
+    private SongList songList;
     private Notification notification;
-    private Usuario user;
+    private User user;
 
-    public Logic(ListaCanciones listaCanciones, Notification notification, Usuario user) {
-        this.listaCanciones = listaCanciones;
+    public Logic(SongList songList, Notification notification, User user) {
+        this.songList = songList;
         this.notification = notification;
         this.user = user;
     }
@@ -21,12 +21,12 @@ public class Logic {
     public void scheduleNotification(){
         //notification.setChoice(choice);
         loadSongs();
-        notification.sendNotification(user, listaCanciones);
+        notification.sendNotification(user, songList);
     }
 
     public void loadSongs(){
         // Cargar el archivo desde la carpeta resources
-        InputStream inputStream = Main.class.getResourceAsStream("/canciones.txt");
+        InputStream inputStream = CheckUp.class.getResourceAsStream("/canciones.txt");
 
         if (inputStream != null) {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -49,7 +49,7 @@ public class Logic {
                         cancion = new Cancion(nombre, artista, emocion, "src/main/resources/Songs/" + ruta, popularidad, rutaImagen);
 
                         // Agrega la canción a la lista
-                        listaCanciones.agregarCancion(cancion);
+                        songList.agregarCancion(cancion);
                     } else {
                         System.out.println("Error en el formato de la línea: " + linea);
                     }
@@ -92,15 +92,15 @@ public class Logic {
     }
 
     public String songName(){
-        return listaCanciones.getSongChoice();
+        return songList.getSongChoice();
     }
 
     public String artistName(){
-        return listaCanciones.getArtistChoice();
+        return songList.getArtistChoice();
     }
 
     public String imageName(){
-        return listaCanciones.getImageChoice();
+        return songList.getImageChoice();
     }
 
 }

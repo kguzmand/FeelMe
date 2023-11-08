@@ -1,8 +1,9 @@
 package logic;
 
 public class LinkedList {
+    //Esta cambiaria tentativamente por un hash
     private class Node {
-        private Usuario data;  // Campo para almacenar los datos
+        private User data;  // Campo para almacenar los datos
         private Node next; // Campo para el siguiente nodo en la lista
 
         // Constructor
@@ -11,7 +12,7 @@ public class LinkedList {
             this.next = null;
         }
 
-        public Usuario getData() {
+        public User getData() {
             return this.data;
         }
 
@@ -19,7 +20,7 @@ public class LinkedList {
             return this.next;
         }
 
-        public void setData(Usuario data) {
+        public void setData(User data) {
             this.data = data;
         }
 
@@ -33,9 +34,9 @@ public class LinkedList {
         head = null;
     }
 
-    public void insert(Usuario usuario) {
+    public void insert(User user) {
         Node newNode = new Node();
-        newNode.setData(usuario);
+        newNode.setData(user);
         newNode.setNext(null);
         if (head == null) {
             head = newNode;
@@ -61,18 +62,18 @@ public class LinkedList {
         return false;
     }
 
-    public boolean delete(Usuario usuario) {
+    public boolean delete(User user) {
         if (head == null) {
             return false; // La lista está vacía
         }
-        if (head.getData().equals(usuario)) {
+        if (head.getData().equals(user)) {
             head = head.getNext();
             return true;
         }
         Node current = head;
         Node prev = null;
         while (current != null) {
-            if (current.getData().equals(usuario)) {
+            if (current.getData().equals(user)) {
                 prev.setNext(current.getNext());
                 return true;
             }
@@ -82,26 +83,13 @@ public class LinkedList {
         return false; // No se encontró el usuario
     }
 
-    public Usuario searchUser(String user){
+    public User searchUser(String user){
         ptr = head;
         while(true){
             if(ptr.data.getNombreUsuario().equals(user)){
                 return ptr.data;
             }
             ptr = ptr.next;
-        }
-    }
-
-    public void print() {
-        Node current = head;
-        while (current != null) {
-            Usuario usuario = current.getData();
-            System.out.println("Nombre de usuario: " + usuario.getNombreUsuario());
-            System.out.println("Edad: " + usuario.getEdad());
-            System.out.println("Correo Electrónico: " + usuario.getCorreoElectronico());
-            System.out.println("Contraseña: " + usuario.getPassword());
-            System.out.println("-----------------------------");
-            current = current.getNext();
         }
     }
 }

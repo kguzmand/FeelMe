@@ -12,10 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import logic.ListaCanciones;
 import controller.Logic;
-import logic.Notification;
-import logic.Usuario;
 
 import java.net.URL;
 import java.util.Objects;
@@ -37,20 +34,15 @@ public class PrincipalController implements Initializable {
     @FXML
     private Button playerButton;
     private int actions;
-    ListaCanciones listaCanciones = new ListaCanciones();
-    Notification notification = new Notification(4, 1);
-    Usuario user = new Usuario("Kguz", 19, "@", "1");
-    Logic logic = new Logic(listaCanciones, notification, user);
     Image play = new Image("Play.png");
     Image stop = new Image("Stop.png");
+    private Logic logic;
 
     public PrincipalController() {
         this.actions = 2;
-        logic.scheduleNotification();
     }
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         // Configura los manejadores de eventos para los MenuItem
         option1.setOnAction(e -> handleOption(1));
         option2.setOnAction(e -> handleOption(2));
@@ -63,7 +55,7 @@ public class PrincipalController implements Initializable {
         // Configura la animación de desplazamiento horizontal
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(4), songName);
         // Establece el desplazamiento horizontal a lo largo del eje X
-        translateTransition.setByX(50); // Ajusta la distancia del desplazamiento
+        translateTransition.setByX(40); // Ajusta la distancia del desplazamiento
         // Configura la animación para que se repita indefinidamente
         translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
         // Inicia la animación
@@ -95,5 +87,9 @@ public class PrincipalController implements Initializable {
             buttonImage.setImage(stop);
         }
         logic.getNotification().setOption(actions);
+    }
+
+    public void setLogic(Logic logic) {
+        this.logic = logic;
     }
 }

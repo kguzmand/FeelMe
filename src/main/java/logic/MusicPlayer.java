@@ -5,12 +5,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-public class ReproductorDeMusica {
+public class MusicPlayer {
     private Clip clip;
     private boolean pausado;
     private final CountDownLatch latch = new CountDownLatch(1);
 
-    public ReproductorDeMusica() {
+    public MusicPlayer() {
         this.clip = null;
         this.pausado = false;
     }

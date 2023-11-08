@@ -1,12 +1,11 @@
 package logic;
 import java.util.EmptyStackException;
 
-public class StackEstadoUsuario {
-
+public class StatusHistory {
     String arrayStack[];
     int top;
 
-    public StackEstadoUsuario(int size) {
+    public StatusHistory(int size) {
         arrayStack = new String[size];
         top = -1;
     }

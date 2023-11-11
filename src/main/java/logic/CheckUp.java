@@ -1,18 +1,29 @@
 package logic;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class CheckUp {
-    private String user;
-    private String password;
+    private String user, password, email;
 
-    public CheckUp() {
+    private int age;
+
+    public CheckUp(String user, String email, int age, String password) {
+        this.user = user;
+        this.email = email;
+        this.age = age;
+        this.password = password;
     }
 
     public CheckUp(String user, String password) {
         this.user = user;
         this.password = password;
+        this.email = null;
+        this.age = 0;
     }
 
     public User logIn() {
@@ -21,16 +32,10 @@ public class CheckUp {
         LinkedList userList = new LinkedList();
         uplodingFiles(userList);
 
-        if (getUser() == null && getPassword() == null) {
-            System.out.print("Nombre de usuario: ");
-            String userName = scanner.next();
-            System.out.print("Edad: ");
-            int age = scanner.nextInt();
-            System.out.print("Correo Electrónico: ");
-            String email = scanner.next();
-            System.out.print("Contraseña: ");
-            String password = scanner.next();
-            saveUser(userName, age, email, password);
+        if (getEmail() != null && getAge() != 0) {
+            thisUser = new User(getUser(), getAge(), getEmail(), getPassword());
+            userList.insert(thisUser);
+            saveUser(getUser(), getAge(), getEmail(), getPassword());
         } else {
             if (!userList.registeredUser(getUser(), getPassword())) {
                 thisUser = logIn();
@@ -39,16 +44,20 @@ public class CheckUp {
             }
         }
 
-        System.out.println("Bienvenido, " + user);
+        System.out.println("Bienvenido, " + thisUser.getNombreUsuario());
         return thisUser;
     }
 
     public void uplodingFiles(LinkedList myLinkedList) {
-        // Cargar el archivo desde la carpeta resources
-        InputStream inputStream = CheckUp.class.getResourceAsStream("/usuarios.txt");
+        // Ruta absoluta al archivo "usuarios.txt" fuera del JAR/WAR
+        String filePath = "usuarios.txt";
 
-        if (inputStream != null) {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+        try {
+            Path path = Paths.get(filePath);
+
+            if (Files.exists(path)) {
+                // Leer todas las líneas del archivo
+                BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8);
                 String linea;
 
                 while ((linea = reader.readLine()) != null) {
@@ -56,7 +65,7 @@ public class CheckUp {
                     String[] partes = linea.split(",");
 
                     if (partes.length == 4) {
-                        // Crea un objeto Cancion con los datos de la línea
+                        // Crea un objeto User con los datos de la línea
                         String user = partes[0].trim();
                         int age = Integer.parseInt(partes[1].trim());
                         String email = partes[2].trim();
@@ -64,17 +73,19 @@ public class CheckUp {
 
                         User newUser = new User(user, age, email, password);
 
-                        // Agrega la canción a la lista
+                        // Agrega el usuario a la lista
                         myLinkedList.insert(newUser);
                     } else {
                         System.out.println("Error en el formato de la línea: " + linea);
                     }
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+
+                reader.close();
+            } else {
+                System.err.println("No se pudo encontrar el archivo: " + filePath);
             }
-        } else {
-            System.err.println("No se pudo encontrar el archivo en resources.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -102,15 +113,11 @@ public class CheckUp {
         return user;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public String getEmail() { return email; }
+
+    public int getAge() { return age; }
 }

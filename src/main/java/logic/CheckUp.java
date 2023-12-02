@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CheckUp {
     private String user, password, email;
-
+    LinkedList userList = new LinkedList();
     private int age;
 
     public CheckUp(String user, String email, int age, String password) {
@@ -17,6 +17,7 @@ public class CheckUp {
         this.email = email;
         this.age = age;
         this.password = password;
+        uplodingFiles(userList);
     }
 
     public CheckUp(String user, String password) {
@@ -24,28 +25,23 @@ public class CheckUp {
         this.password = password;
         this.email = null;
         this.age = 0;
+        uplodingFiles(userList);
     }
 
     public User logIn() {
         Scanner scanner = new Scanner(System.in);
         User thisUser = null;
-        LinkedList userList = new LinkedList();
-        uplodingFiles(userList);
 
-        if (getEmail() != null && getAge() != 0) {
-            thisUser = new User(getUser(), getAge(), getEmail(), getPassword());
-            userList.insert(thisUser);
-            saveUser(getUser(), getAge(), getEmail(), getPassword());
-        } else {
-            if (!userList.registeredUser(getUser(), getPassword())) {
-                thisUser = logIn();
-            } else {
-                thisUser = userList.searchUser(user);
-            }
+        if (userList.registeredUser(getUser(), getPassword())) {
+            thisUser = userList.searchUser(user);
         }
 
-        System.out.println("Bienvenido, " + thisUser.getNombreUsuario());
         return thisUser;
+    }
+
+    public void singUp(){
+        userList.insert(new User(getUser(), getAge(), getEmail(), getPassword()));
+        saveUser(getUser(), getAge(), getEmail(), getPassword());
     }
 
     public void uplodingFiles(LinkedList myLinkedList) {

@@ -29,7 +29,7 @@
                   <Image url="@Nombre.png" />
                </image>
             </ImageView>
-            <TextField fx:id="user" layoutX="19.0" layoutY="53.0" prefHeight="21.0" prefWidth="188.0" promptText="Nombre de user" style="-fx-background-color: Gainsboro;">
+            <TextField fx:id="user" layoutX="19.0" layoutY="53.0" prefHeight="21.0" prefWidth="188.0" promptText="Usuario" style="-fx-background-color: Gainsboro;">
                <font>
                   <Font size="10.0" />
                </font>
@@ -54,6 +54,11 @@
                   <Font size="10.0" />
                </font>
             </PasswordField>
+            <Text fx:id="error" accessibleRole="BUTTON" fill="#d32121" layoutX="124.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="83.0">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>

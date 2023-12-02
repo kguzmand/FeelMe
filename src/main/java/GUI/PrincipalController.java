@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -17,6 +18,7 @@ import controller.Logic;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.CountDownLatch;
 
 public class PrincipalController implements Initializable {
     @FXML
@@ -26,13 +28,17 @@ public class PrincipalController implements Initializable {
     private MenuItem option1, option2, option3, option4, option5, option6;
 
     @FXML
-    private ImageView songImage, buttonImage;
+    private ImageView songImage, buttonImage, good, normal, bad;
 
     @FXML
-    private Text songArtist, songName;
+    private Text songArtist, songName, greeting;
 
     @FXML
     private Button playerButton;
+
+    @FXML
+    private Slider mySlider;
+
     private int actions;
     Image play = new Image("Play.png");
     Image stop = new Image("Stop.png");
@@ -42,7 +48,9 @@ public class PrincipalController implements Initializable {
         this.actions = 2;
     }
     public void initialize(URL location, ResourceBundle resources) {
-
+        mySlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            handleSliderChange();
+        });
         // Configura los manejadores de eventos para los MenuItem
         option1.setOnAction(e -> handleOption(1));
         option2.setOnAction(e -> handleOption(2));
@@ -62,11 +70,26 @@ public class PrincipalController implements Initializable {
         translateTransition.play();
     }
     @FXML
+    private void handleSliderChange() {
+        int getValue = (int) mySlider.getValue();
+        if(getValue >= 1 && getValue <= 4){
+            bad.setImage(new Image("sadC.png"));
+        }else if (getValue >= 5 && getValue <= 7) {
+            normal.setImage(new Image("mehC.png"));
+        }else{
+            good.setImage(new Image("happyC.png"));
+        }
+    }
+    @FXML
     protected void handleOption(int num) {
         String emotion = logic.emotionChoice(num);
         emotionsMenu.setText("Me siento... " + emotion);
         logic.getNotification().setChoice(num);
         buttonImage.setImage(stop);
+        mySlider.setValue(1);
+        good.setImage(new Image("happyWhite.png"));
+        normal.setImage(new Image("mehWhite.png"));
+        bad.setImage(new Image("sadWhite.png"));
         Platform.runLater(() -> {
             songName.setText(logic.songName());
             songArtist.setText(logic.artistName());
@@ -91,5 +114,6 @@ public class PrincipalController implements Initializable {
 
     public void setLogic(Logic logic) {
         this.logic = logic;
+        greeting.setText("Bienvenid@, " + logic.userName());
     }
 }

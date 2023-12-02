@@ -103,4 +103,6 @@ public class Logic {
         return songList.getImageChoice();
     }
 
+    public String userName(){return user.getNombreUsuario();}
+
 }

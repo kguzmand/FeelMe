@@ -172,7 +172,6 @@ public class Notification {
         }
     }
 
-
     public void setChoice(int choice) {
         this.choice = choice;
         choiceLatch.countDown(); // Liberar el CountDownLatch

@@ -64,21 +64,11 @@ public class RegisterController implements Initializable {
     }
 
     private void getAccess(CheckUp checkUp){
-        User user = checkUp.logIn();
-        SongList songList = new SongList();
-        Notification notification = new Notification(4, 1);
-        Logic logic = new Logic(songList, notification, user);
-        logic.scheduleNotification();
+        checkUp.singUp();
         try {
             // Cargar la vista Principal.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Principal.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
             Parent root = loader.load();
-
-            // Obtener el controlador de la vista Principal.fxml
-            PrincipalController principalController = loader.getController();
-
-            // Configurar cualquier dato necesario en el controlador principalController
-            principalController.setLogic(logic);
 
             // Obtener el Stage actual
             Stage currentStage = (Stage) singUp.getScene().getWindow();
@@ -91,6 +81,7 @@ public class RegisterController implements Initializable {
             e.printStackTrace();
         }
     }
+
     private void registeredUser(MouseEvent event) throws InterruptedException {
         try {
             // Cargar la vista Principal.fxml

@@ -32,7 +32,7 @@ public class LoginController implements Initializable {
     private PasswordField password;
 
     @FXML
-    private Text singUp;
+    private Text singUp, error;
 
     @FXML
     private Button logIn;
@@ -79,31 +79,40 @@ public class LoginController implements Initializable {
     }
 
     private void getAccess(CheckUp checkUp){
-        User user = checkUp.logIn();
-        SongList songList = new SongList();
-        Notification notification = new Notification(4, 1);
-        Logic logic = new Logic(songList, notification, user);
-        logic.scheduleNotification();
-        try {
-            // Cargar la vista Principal.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Principal.fxml"));
-            Parent root = loader.load();
+        boolean flag = true;
+        User myUser = checkUp.logIn();
+        if(myUser == null){
+            user.setText("");
+            password.setText("");
+            error.setText("Intente nuevamente");
+            flag = false;
+        }
+        if(flag) {
+            SongList songList = new SongList();
+            Notification notification = new Notification(4, 1);
+            Logic logic = new Logic(songList, notification, myUser);
+            logic.scheduleNotification();
+            try {
+                // Cargar la vista Principal.fxml
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Principal.fxml"));
+                Parent root = loader.load();
 
-            // Obtener el controlador de la vista Principal.fxml
-            PrincipalController principalController = loader.getController();
+                // Obtener el controlador de la vista Principal.fxml
+                PrincipalController principalController = loader.getController();
 
-            // Configurar cualquier dato necesario en el controlador principalController
-            principalController.setLogic(logic);
+                // Configurar cualquier dato necesario en el controlador principalController
+                principalController.setLogic(logic);
 
-            // Obtener el Stage actual
-            Stage currentStage = (Stage) logIn.getScene().getWindow();
+                // Obtener el Stage actual
+                Stage currentStage = (Stage) logIn.getScene().getWindow();
 
-            // Configurar la nueva escena en el Stage principal
-            Scene scene = new Scene(root, 600, 400);
-            currentStage.setScene(scene);
+                // Configurar la nueva escena en el Stage principal
+                Scene scene = new Scene(root, 600, 400);
+                currentStage.setScene(scene);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
